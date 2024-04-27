@@ -1,0 +1,70 @@
+name: cy-api-test
+on:
+  push:
+  workflow_dispatch:
+
+# if this branch is pushed back to back, cancel the older branch's workflow
+concurrency:
+  group: ${{ github.ref }} && ${{ github.workflow }}
+  cancel-in-progress: true
+
+jobs:
+  install-dependencies:
+    name: Install Dependencies
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - name: Install dependencies
+        uses: cypress-io/github-action@v6.5.0
+        with:
+          runTests: false
+
+  lint:
+    needs: install-dependencies
+    name: Run lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - name: Install dependencies
+        uses: cypress-io/github-action@v6.5.0
+        with:
+          runTests: false
+      - name: lint
+        run: yarn lint
+
+  typecheck:
+    needs: install-dependencies
+    name: Run typecheck
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - name: Install dependencies
+        uses: cypress-io/github-action@v6.5.0
+        with:
+          runTests: false
+      - name: typecheck
+        run: yarn typecheck
+
+  cypress-e2e-test:
+    needs: install-dependencies
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - name: Cypress e2e tests 🧪
+        uses: cypress-io/github-action@v6.5.0
+        with:
+          browser: chrome
+          record: true
+          group: e2e-tests
+          tag: e2e-tests
+        env:
+          # CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

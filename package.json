@@ -1,0 +1,55 @@
+{
+  "name": "cypress-crud-api-test",
+  "version": "1.0.0",
+  "description": "crud testing a serverless application with Cypress api tests",
+  "scripts": {
+    "typecheck": "tsc --skipLibCheck --noEmit",
+    "lint": "eslint --ext=.js,.ts,.tsx --fix",
+    "prettier": "prettier --ignore-path .gitignore \"**/*.+(js|ts|json)\"",
+    "fix-format": "yarn prettier -- --write",
+    "validate": "npm-run-all --parallel typecheck lint fix-format",
+    "cy:open": "cypress open --e2e --browser chrome",
+    "cy:run": "cypress run --e2e --browser chrome"
+  },
+  "author": "Murat Ozcan",
+  "license": "ISC",
+  "devDependencies": {
+    "@bahmutov/cy-api": "2.2.6",
+    "@bahmutov/cypress-esbuild-preprocessor": "2.2.0",
+    "@esbuild-plugins/node-globals-polyfill": "0.2.3",
+    "@esbuild-plugins/node-modules-polyfill": "0.2.2",
+    "@faker-js/faker": "^8.4.1",
+    "@types/node": "20.12.7",
+    "@typescript-eslint/eslint-plugin": "7.7.1",
+    "@typescript-eslint/parser": "7.7.1",
+    "cy-spok": "1.6.2",
+    "cypress": "13.8.1",
+    "cypress-data-session": "2.8.2",
+    "cypress-each": "1.14.0",
+    "cypress-map": "1.38.0",
+    "esbuild": "0.20.2",
+    "eslint": "8.57.0",
+    "eslint-plugin-chai-friendly": "0.7.4",
+    "eslint-plugin-cypress": "3.0.2",
+    "eslint-plugin-no-only-tests": "3.1.0",
+    "husky": "4.3.8",
+    "jsonwebtoken": "9.0.2",
+    "lint-staged": "15.2.2",
+    "npm-run-all": "4.1.5",
+    "prettier": "3.2.5",
+    "typescript": "5.4.5"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn typecheck && lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.+(js|ts|tsx)": [
+      "lint"
+    ],
+    "**/*.+(js|ts|json)": [
+      "prettier --write"
+    ]
+  }
+}

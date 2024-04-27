@@ -3,7 +3,7 @@ import 'cypress-data-session'
 import 'cypress-each'
 import 'cypress-map'
 import '@bahmutov/cy-api'
-import './create-user'
+import './register-login-user'
 
 export type Crocodile = {
   id: number

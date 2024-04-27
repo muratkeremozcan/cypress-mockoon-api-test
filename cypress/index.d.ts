@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
-import type { UserData } from './support/create-user'
+import type { UserData } from './support/register-login-user'
 import type { Crocodile } from './support/e2e'
 
 /* eslint-disable @typescript-eslint/no-explicit-any */

@@ -22,7 +22,3 @@ yarn check-format # check only changed files
 # all the above in parallel
 yarn validate
 ```
-
-### `lint-staged` & `husky`
-
-On `git commit`, `typecheck` is run, followed by `lint`, then Prettier fixes the format of **only the staged files** and appends them to the commit.

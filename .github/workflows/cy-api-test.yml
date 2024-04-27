@@ -62,9 +62,9 @@ jobs:
         uses: cypress-io/github-action@v6.5.0
         with:
           browser: chrome
-          record: true
-          group: e2e-tests
-          tag: e2e-tests
+          # record: true
+          # group: e2e-tests
+          # tag: e2e-tests
         env:
           # CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

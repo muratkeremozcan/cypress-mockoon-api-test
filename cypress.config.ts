@@ -6,7 +6,7 @@ import esbuildPreprocessor from './cypress/support/esbuild-preprocessor'
 export default defineConfig({
   viewportHeight: 1280,
   viewportWidth: 1280,
-  // projectId: '4q6j7j',
+  // projectId: '***',
 
   e2e: {
     setupNodeEvents(on, config) {

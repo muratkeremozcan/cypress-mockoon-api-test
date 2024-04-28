@@ -4,21 +4,35 @@ import 'cypress-each'
 import 'cypress-map'
 import '@bahmutov/cy-api'
 import './register-login-user'
+import { faker } from '@faker-js/faker'
 
-export type Crocodile = {
-  id: number
+export type CrocodileBase = {
   name: string
   sex: string
   date_of_birth: string
+}
+export type CrocodileWithId = CrocodileBase & { id: number }
+export type Crocodile = CrocodileWithId & {
   age: number
 }
 
-const headers = (token) => ({
-  'Access-Token': token
+const commonHeaders = (token) => {
+  return {
+    Authorization: `Bearer ${token}`
+  }
+}
+
+export const generateCrocodile = (): CrocodileBase => ({
+  name: faker.person.fullName(),
+  sex: ['M', 'F'][Cypress._.random(0, 1)],
+  date_of_birth: faker.date
+    .past({ years: 20, refDate: '2020-01-01' })
+    .toISOString()
+    .split('T')[0]
 })
 
-Cypress.Commands.add('getCrocodiles', (allowedToFail = false) => {
-  cy.log('**getCrocodiles**')
+Cypress.Commands.add('getPublicCrocodiles', (allowedToFail = false) => {
+  cy.log('**getPublicCrocodiles**')
   return cy.api({
     method: 'GET',
     url: '/public/crocodiles',
@@ -27,137 +41,102 @@ Cypress.Commands.add('getCrocodiles', (allowedToFail = false) => {
   })
 })
 
-Cypress.Commands.add('getCrocodile', (id: number, allowedToFail = false) => {
-  cy.log(`**getCrocodile by id: ${id}**`)
-  return cy.api({
-    method: 'GET',
-    url: `/public/crocodiles/${id}`,
-    retryOnStatusCodeFailure: !allowedToFail,
-    failOnStatusCode: !allowedToFail
-  })
-})
+Cypress.Commands.add(
+  'getPublicCrocodile',
+  (id: number, allowedToFail = false) => {
+    cy.log(`**getPublicCrocodile by id: ${id}**`)
+    return cy.api({
+      method: 'GET',
+      url: `/public/crocodiles/${id}`,
+      retryOnStatusCodeFailure: !allowedToFail,
+      failOnStatusCode: !allowedToFail
+    })
+  }
+)
 
-// Cypress.Commands.add(
-//   'createOrder',
-//   (
-//     token: string,
-//     body: Order = {
-//       pizza: datatype.number(),
-//       address: address.streetAddress()
-//     },
-//     allowedToFail = false
-//   ) =>
-//     cy.log('**createOrder**').api({
-//       method: 'POST',
-//       url: `/orders`,
-//       headers: headers(token),
-//       body,
-//       retryOnStatusCodeFailure: !allowedToFail,
-//       failOnStatusCode: !allowedToFail
-//     })
-// )
+Cypress.Commands.add(
+  'getMyCrocodiles',
+  (token: string, allowedToFail = false) => {
+    cy.log('**getMyCrocodiles**')
+    return cy.api({
+      method: 'GET',
+      url: '/my/crocodiles/',
+      headers: commonHeaders(token),
+      retryOnStatusCodeFailure: !allowedToFail,
+      failOnStatusCode: !allowedToFail
+    })
+  }
+)
 
-// Cypress.Commands.add(
-//   'getOrder',
-//   (token: string, orderId: string, allowedToFail = false) =>
-//     cy.log('**getOrder**').api({
-//       method: 'GET',
-//       url: `/orders/${orderId}`,
-//       headers: headers(token),
-//       retryOnStatusCodeFailure: !allowedToFail,
-//       failOnStatusCode: !allowedToFail
-//     })
-// )
+Cypress.Commands.add(
+  'getMyCrocodile',
+  (token: string, id: number, allowedToFail = false) => {
+    cy.log(`**getMyCrocodile by id: ${id}**`)
+    return cy.api({
+      method: 'GET',
+      url: `/my/crocodiles/${id}/`,
+      headers: commonHeaders(token),
+      retryOnStatusCodeFailure: !allowedToFail,
+      failOnStatusCode: !allowedToFail
+    })
+  }
+)
 
-// Cypress.Commands.add(
-//   'updateOrder',
-//   (
-//     token: string,
-//     orderId: string,
-//     body: Order = {
-//       pizza: datatype.number(),
-//       address: address.streetAddress()
-//     },
-//     allowedToFail = false
-//   ) =>
-//     cy.log('**updateOrder**').api({
-//       method: 'PUT',
-//       url: `/orders/${orderId}`,
-//       headers: headers(token),
-//       body,
-//       retryOnStatusCodeFailure: !allowedToFail,
-//       failOnStatusCode: !allowedToFail
-//     })
-// )
+Cypress.Commands.add(
+  'createCrocodile',
+  (token: string, body: CrocodileBase, allowedToFail = false) => {
+    cy.log('**createCrocodile**')
+    return cy.api({
+      method: 'POST',
+      url: '/my/crocodiles/',
+      headers: commonHeaders(token),
+      body: body,
+      retryOnStatusCodeFailure: !allowedToFail,
+      failOnStatusCode: !allowedToFail
+    })
+  }
+)
 
-// Cypress.Commands.add(
-//   'deleteOrder',
-//   (token: string, orderId: string, allowedToFail = false) =>
-//     cy.log('**deleteOrder**').api({
-//       method: 'DELETE',
-//       url: `/orders/${orderId}`,
-//       headers: headers(token),
-//       retryOnStatusCodeFailure: !allowedToFail,
-//       failOnStatusCode: !allowedToFail
-//     })
-// )
+Cypress.Commands.add(
+  'updateCrocodile',
+  (token: string, body: CrocodileWithId, allowedToFail = false) => {
+    cy.log('**updateCrocodile**')
+    return cy.api({
+      method: 'PUT',
+      url: `/my/crocodiles/${body.id}/`,
+      headers: commonHeaders(token),
+      body: body,
+      retryOnStatusCodeFailure: !allowedToFail,
+      failOnStatusCode: !allowedToFail
+    })
+  }
+)
 
-// /** Checks if a pizza with the given id exists in the database */
-// const checkPizza = (token: string, pizzaId: number) =>
-//   cy
-//     .getOrders(token, true) // allowed to fail
-//     .its('body')
-//     .then(
-//       (orders) =>
-//         Cypress._.filter(orders, (order) => order.pizza === pizzaId).length
-//     )
-//     .then(Boolean)
+Cypress.Commands.add(
+  'patchCrocodile',
+  (token: string, body: Partial<Crocodile>, allowedToFail = false) => {
+    cy.log('**patchCrocodile**')
+    return cy.api({
+      method: 'PATCH',
+      url: `/my/crocodiles/${body.id}/`,
+      headers: commonHeaders(token),
+      body: body,
+      retryOnStatusCodeFailure: !allowedToFail,
+      failOnStatusCode: !allowedToFail
+    })
+  }
+)
 
-// Cypress.Commands.add(
-//   'maybeCreateOrder',
-//   (
-//     sessionName: string,
-//     token: string,
-//     body: Order = {
-//       pizza: datatype.number(),
-//       address: address.streetAddress()
-//     }
-//   ) =>
-//     cy.dataSession({
-//       name: `${sessionName}`,
-
-//       // this is not really necessary, it is here for clarity and educational purposes
-//       init: () => {
-//         cy.log(
-//           `**init()**: runs when there is nothing in cache. Yields the value to validate()`
-//         )
-//       },
-
-//       validate: () => {
-//         cy.log(
-//           `**validate()**: returns true if the pizza already exists, false otherwise.`
-//         )
-//         return checkPizza(token, body.pizza)
-//       },
-
-//       setup: () => {
-//         cy.log(`**setup()**: there is no pizza by that id, so create an order.`)
-//         cy.createOrder(token, body)
-//       },
-
-//       recreate: () => {
-//         cy.log(
-//           `**recreate()**: if there is a pizza by that ID, just resolve a promise through`
-//         )
-//         Promise.resolve()
-//       },
-
-//       onInvalidated: () => {
-//         cy.log(
-//           `**onInvalidated**: runs when validate() returns false; no pizza!`
-//         )
-//       },
-
-//       shareAcrossSpecs: true
-//     })
-// )
+Cypress.Commands.add(
+  'deleteCrocodile',
+  (token: string, id: number, allowedToFail = false) => {
+    cy.log('**deleteCrocodile by id: ${id}**')
+    return cy.api({
+      method: 'DELETE',
+      url: `/my/crocodiles/${id}/`,
+      headers: commonHeaders(token),
+      retryOnStatusCodeFailure: !allowedToFail,
+      failOnStatusCode: !allowedToFail
+    })
+  }
+)

@@ -1,0 +1,95 @@
+@baseUrl = https://test-api.k6.io
+@username = Lora28
+@password = ugAULkq1S75D0oc
+@crocodileId = 13528358
+
+
+###
+# @name getPublickCrocodiles
+GET {{baseUrl}}/public/crocodiles/
+
+###
+# @name getPublicCrocodile
+GET {{baseUrl}}/public/crocodiles/1
+
+### change these values if you want to register a new user, I already registered this
+# @name registerUser
+POST {{baseUrl}}/user/register/ 
+Content-Type: application/json
+
+{
+    "username": "Lora28",
+    "first_name": "Jed",
+    "last_name": "Carroll",
+    "email": "Maxime55@yahoo.com",
+    "password": "ugAULkq1S75D0oc"
+}
+
+###
+# @name login
+POST {{baseUrl}}/auth/token/login/
+Content-Type: application/json
+
+{
+    "username": "{{username}}",
+    "password": "{{password}}"
+}
+
+###
+# @name refreshToken
+POST {{baseUrl}}/auth/token/refresh/
+Content-Type: application/json
+
+{
+    "refresh": "{{login.response.body.refresh}}"
+}
+
+
+###
+# @name getMyCrocodiles
+GET {{baseUrl}}/my/crocodiles/
+Authorization: Bearer {{login.response.body.access}}
+
+###
+# @name createCrocodile
+POST {{baseUrl}}/my/crocodiles/
+Authorization: Bearer {{login.response.body.access}}
+Content-Type: application/json
+
+{
+    "name": "Big Bertha2",
+    "sex": "F",
+    "date_of_birth": "2019-01-01"
+}
+
+###
+# @name getMyCrocodile
+GET {{baseUrl}}/my/crocodiles/{{crocodileId}}/
+Authorization: Bearer {{login.response.body.access}}
+
+###
+# @name updateCrocodile
+PUT {{baseUrl}}/my/crocodiles/{{crocodileId}}/
+Authorization: Bearer {{login.response.body.access}}
+Content-Type: application/json
+
+{
+    "name": "Big Bertha LOCAL EDIT",
+    "sex": "M",
+    "date_of_birth": "2019-01-01"
+}
+
+###
+# @name patchCrocodile
+PATCH {{baseUrl}}/my/crocodiles/{{crocodileId}}/
+Authorization: Bearer {{login.response.body.access}}
+Content-Type: application/json
+
+{
+    "name": "Big Bertha PATCH"
+}
+
+###
+# @name deleteCrocodile
+DELETE {{baseUrl}}/my/crocodiles/{{crocodileId}}/
+Authorization: Bearer {{login.response.body.access}}

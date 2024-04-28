@@ -10,7 +10,7 @@ describe('Public APIs', () => {
   }
 
   it('should GET all crocodiles, and validate the properties of each crocodile', () => {
-    cy.getCrocodiles()
+    cy.getPublicCrocodiles()
       .should(
         spok({
           status: 200,
@@ -23,7 +23,7 @@ describe('Public APIs', () => {
 
   it('should GET one crocodile', () => {
     const id = 1
-    cy.getCrocodile(id).should(
+    cy.getPublicCrocodile(id).should(
       spok({
         status: 200,
         body: {

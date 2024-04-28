@@ -46,22 +46,24 @@ const login = (username: string, password: string) => {
 Cypress.Commands.add('login', login)
 
 Cypress.Commands.add(
-  'maybeLogin',
+  'getSessionToken',
   (
     sessionName: string,
     username: string = userData.username,
     password: string = userData.password
   ) =>
-    cy.dataSession({
-      name: `${sessionName}`,
+    cy
+      .dataSession({
+        name: `${sessionName}`,
 
-      validate: () => true,
+        validate: () => true,
 
-      setup: () => {
-        createUser(userData)
-        login(username, password)
-      },
+        setup: () => {
+          createUser(userData)
+          login(username, password)
+        },
 
-      shareAcrossSpecs: true
-    })
+        shareAcrossSpecs: true
+      })
+      .its('body.access')
 )

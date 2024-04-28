@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
 import type { UserData } from './support/register-login-user'
-import type { Crocodile } from './support/e2e'
+import type { CrocodileBase, CrocodileWithId, Crocodile } from './support/e2e'
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 export {}
@@ -9,25 +9,6 @@ export {}
 declare global {
   namespace Cypress {
     interface Chainable<Subject> {
-      /** Gets a list of crocodiles
-       * ```js
-       * cy.getCrocodiles()
-       * ```
-       */
-      getCrocodiles(
-        allowedToFail?: boolean
-      ): Chainable<Response<Crocodile[]> & Messages>
-
-      /** Gets an order by id
-       * ```js
-       * cy.getOrder(token, orderId)
-       * ```
-       */
-      getCrocodile(
-        id: number,
-        allowedToFail?: boolean
-      ): Chainable<Response<Crocodile> & Messages>
-
       /** Creates a user
        */
       createUser(user: UserData): Chainable<any>
@@ -41,11 +22,95 @@ declare global {
       /** logs in with the username and password */
       login(username: string, password: string): Chainable<any>
 
-      maybeLogin(
+      getSessionToken(
         sessionName: string,
         username?: string,
         password?: string
       ): Chainable<any>
+
+      /** Gets a list of public crocodiles
+       * ```js
+       * cy.getPublicCrocodiles()
+       * ```
+       */
+      getPublicCrocodiles(
+        allowedToFail?: boolean
+      ): Chainable<Response<Crocodile[]> & Messages>
+
+      /** Gets a public crocodile by id
+       * ```js
+       * cy.getPublicCrocodile(1)
+       * ```
+       */
+      getPublicCrocodile(
+        id: number,
+        allowedToFail?: boolean
+      ): Chainable<Response<Crocodile> & Messages>
+
+      /** Gets a list of authenticated crocodiles
+       * ```js
+       * cy.getMyCrocodiles(token)
+       * ```
+       */
+      getMyCrocodiles(
+        token: string,
+        allowedToFail?: boolean
+      ): Chainable<Response<Crocodile[]> & Messages>
+
+      /** Gets an authenticated crocodile by id
+       * ```js
+       * cy.getMyCrocodile(token, 1)
+       * ```
+       */
+      getMyCrocodile(
+        token: string,
+        id: number,
+        allowedToFail?: boolean
+      ): Chainable<Response<Crocodile> & Messages>
+
+      /** Creates a crocodile
+       * ```js
+       * cy.createCrocodile(token, body)
+       * ```
+       */
+      createCrocodile(
+        token: string,
+        body: CrocodileBase,
+        allowedToFail?: boolean
+      ): Chainable<Response<Crocodile> & Messages>
+
+      /** Updates a crocodile
+       * ```js
+       * cy.updateCrocodile(token, body)
+       * ```
+       */
+      updateCrocodile(
+        token: string,
+        body: CrocodileWithId,
+        allowedToFail?: boolean
+      ): Chainable<Response<Crocodile> & Messages>
+
+      /** Patches a crocodile
+       * ```js
+       * cy.patchCrocodile(token, body)
+       * ```
+       */
+      patchCrocodile(
+        token: string,
+        body: Partial<CrocodileWithId>,
+        allowedToFail?: boolean
+      ): Chainable<Response<Crocodile> & Messages>
+
+      /** Deletes a crocodile
+       * ```js
+       * cy.deleteCrocodile(token)
+       * ```
+       */
+      deleteCrocodile(
+        token: string,
+        id: number,
+        allowedToFail?: boolean
+      ): Chainable<Response<Crocodile> & Messages>
     }
   }
 }

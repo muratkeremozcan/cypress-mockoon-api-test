@@ -15,7 +15,7 @@ describe('CRUD crocodile', () => {
   }
 
   retryableBefore(() => {
-    cy.getSessionToken('test-session9').then((t) => {
+    cy.getSessionToken('test-session').then((t) => {
       token = t
     })
   })

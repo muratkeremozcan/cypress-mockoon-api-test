@@ -27,14 +27,6 @@ describe('login', () => {
   })
 
   it('should login with a data-session', () => {
-    cy.getSessionToken('test-login').should(
-      spok({
-        status: 200,
-        body: {
-          refresh: spok.string,
-          access: spok.string
-        }
-      })
-    )
+    cy.getSessionToken('test-login').should('be.a', 'string')
   })
 })

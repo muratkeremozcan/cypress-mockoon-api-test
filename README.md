@@ -17,8 +17,6 @@ There is a `test.rest` file in the repo root that can help us get familiar with 
 ```bash
 yarn lint
 yarn typecheck
-yarn check-format # check only changed files
-
 # all the above in parallel
 yarn validate
 ```

@@ -27,7 +27,7 @@ describe('login', () => {
   })
 
   it('should login with a data-session', () => {
-    cy.maybeLogin('test-login').should(
+    cy.getSessionToken('test-login').should(
       spok({
         status: 200,
         body: {

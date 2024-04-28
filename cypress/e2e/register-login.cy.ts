@@ -2,18 +2,16 @@ import { faker } from '@faker-js/faker'
 import spok from 'cy-spok'
 
 describe('user registration and login', () => {
-  const password = 'Password-1'
-  const username = faker.internet.userName()
-  const user = {
-    username,
-    first_name: faker.person.firstName(),
-    last_name: faker.person.lastName(),
-    email: faker.internet.email(),
-    password
-  }
-
   context('user registration', () => {
     it('should create a user', () => {
+      const user = {
+        username: faker.internet.userName(),
+        first_name: faker.person.firstName(),
+        last_name: faker.person.lastName(),
+        email: faker.internet.email(),
+        password: faker.internet.password()
+      }
+
       const { password, ...body } = user
 
       cy.api({
@@ -53,6 +51,16 @@ describe('user registration and login', () => {
 
   context('login', () => {
     it('should login with a user', () => {
+      const password = 'Password-1'
+      const username = faker.internet.userName()
+      const user = {
+        username,
+        first_name: faker.person.firstName(),
+        last_name: faker.person.lastName(),
+        email: faker.internet.email(),
+        password
+      }
+
       cy.createUser(user)
 
       cy.login(username, password).should(

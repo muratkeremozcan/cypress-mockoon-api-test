@@ -21,7 +21,7 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.sha }}
       - name: Install dependencies
-        uses: cypress-io/github-action@v6.5.0
+        uses: cypress-io/github-action@v6.6.1
         with:
           runTests: false
 
@@ -34,7 +34,7 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.sha }}
       - name: Install dependencies
-        uses: cypress-io/github-action@v6.5.0
+        uses: cypress-io/github-action@v6.6.1
         with:
           runTests: false
       - name: lint
@@ -49,7 +49,7 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.sha }}
       - name: Install dependencies
-        uses: cypress-io/github-action@v6.5.0
+        uses: cypress-io/github-action@v6.6.1
         with:
           runTests: false
       - name: typecheck
@@ -64,10 +64,10 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.sha }}
       - name: Cypress e2e tests 🧪
-        uses: cypress-io/github-action@v6.5.0
+        uses: cypress-io/github-action@v6.6.1
         with:
           browser: chrome
-          config-file: ./config/dev-config.ts
+          config-file: cypress/config/dev.config.ts
           # record: true
           # group: dev
           # tag: dev
@@ -80,11 +80,11 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.sha }}
       - name: Cypress e2e tests 🧪
-        uses: cypress-io/github-action@v6.5.0
+        uses: cypress-io/github-action@v6.6.1
         with:
           start: yarn mock:server
           browser: chrome
-          config-file: ./config/local-config.ts
+          config-file: cypress/config/local.config.ts
           # record: true
           # group: local
           # tag: local

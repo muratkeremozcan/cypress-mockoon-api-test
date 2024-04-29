@@ -1,0 +1,30 @@
+name: cy-api-dev
+on:
+  push:
+    branches: [main]
+    tags: ['*']
+  workflow_dispatch:
+
+# if this branch is pushed back to back, cancel the older branch's workflow
+concurrency:
+  group: ${{ github.ref }} && ${{ github.workflow }}
+  cancel-in-progress: true
+
+jobs:
+  cypress-e2e-dev:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - name: Cypress e2e tests 🧪
+        uses: cypress-io/github-action@v6.6.1
+        with:
+          browser: chrome
+          config-file: cypress/config/dev.config.ts
+          # record: true
+          # group: dev
+          # tag: dev
+        env:
+          # CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

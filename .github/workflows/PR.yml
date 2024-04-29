@@ -1,12 +1,16 @@
-name: cy-api-test
+name: cy-api-pr
 on:
-  push:
+  pull_request:
   workflow_dispatch:
 
 # if this branch is pushed back to back, cancel the older branch's workflow
 concurrency:
   group: ${{ github.ref }} && ${{ github.workflow }}
   cancel-in-progress: true
+
+env:
+  # CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
   install-dependencies:
@@ -17,7 +21,7 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.sha }}
       - name: Install dependencies
-        uses: cypress-io/github-action@v6.5.0
+        uses: cypress-io/github-action@v6.6.1
         with:
           runTests: false
 
@@ -30,7 +34,7 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.sha }}
       - name: Install dependencies
-        uses: cypress-io/github-action@v6.5.0
+        uses: cypress-io/github-action@v6.6.1
         with:
           runTests: false
       - name: lint
@@ -45,13 +49,14 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.sha }}
       - name: Install dependencies
-        uses: cypress-io/github-action@v6.5.0
+        uses: cypress-io/github-action@v6.6.1
         with:
           runTests: false
       - name: typecheck
         run: yarn typecheck
 
-  cypress-e2e-test:
+  # runnin both dev and local for example's sake, in the real world we would probably only run local here
+  cypress-e2e-dev:
     needs: install-dependencies
     runs-on: ubuntu-latest
     steps:
@@ -59,12 +64,27 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.sha }}
       - name: Cypress e2e tests 🧪
-        uses: cypress-io/github-action@v6.5.0
+        uses: cypress-io/github-action@v6.6.1
         with:
           browser: chrome
+          config-file: cypress/config/dev.config.ts
           # record: true
-          # group: e2e-tests
-          # tag: e2e-tests
-        env:
-          # CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # group: dev
+          # tag: dev
+
+  cypress-e2e-local:
+    needs: install-dependencies
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - name: Cypress e2e tests 🧪
+        uses: cypress-io/github-action@v6.6.1
+        with:
+          start: yarn mock:server
+          browser: chrome
+          config-file: cypress/config/local.config.ts
+          # record: true
+          # group: local
+          # tag: local

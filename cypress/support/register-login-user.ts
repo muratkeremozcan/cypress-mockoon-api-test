@@ -1,12 +1,6 @@
-import { faker } from '@faker-js/faker'
+import { generateUser } from './factories'
 
-const userData = {
-  username: faker.internet.userName(),
-  first_name: faker.person.firstName(),
-  last_name: faker.person.lastName(),
-  email: faker.internet.email(),
-  password: faker.internet.password()
-}
+const userData = generateUser()
 export type UserData = typeof userData
 
 const createUser = (user: UserData) => {

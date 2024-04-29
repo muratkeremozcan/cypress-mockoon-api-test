@@ -4,7 +4,6 @@ import 'cypress-each'
 import 'cypress-map'
 import '@bahmutov/cy-api'
 import './register-login-user'
-import { faker } from '@faker-js/faker'
 
 export type CrocodileBase = {
   name: string
@@ -21,15 +20,6 @@ const commonHeaders = (token) => {
     Authorization: `Bearer ${token}`
   }
 }
-
-export const generateCrocodile = (): CrocodileBase => ({
-  name: faker.person.fullName(),
-  sex: ['M', 'F'][Cypress._.random(0, 1)],
-  date_of_birth: faker.date
-    .past({ years: 20, refDate: '2020-01-01' })
-    .toISOString()
-    .split('T')[0]
-})
 
 Cypress.Commands.add('getPublicCrocodiles', (allowedToFail = false) => {
   cy.log('**getPublicCrocodiles**')

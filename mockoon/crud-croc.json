@@ -1,0 +1,720 @@
+{
+  "uuid": "948088f9-fe57-4667-af0a-08caecf16cbe",
+  "lastMigration": 32,
+  "name": "crud-croc",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "",
+  "folders": [],
+  "routes": [
+    {
+      "uuid": "45608bbd-184c-44f7-9b92-ca7907a2d822",
+      "type": "http",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "user/register/",
+      "responses": [
+        {
+          "uuid": "03f26f0e-d56a-47a9-9797-edf9ce2d9045",
+          "body": "{\"username\":\"Tessie.Walker\",\"first_name\":\"Samir\",\"last_name\":\"Lakin\",\"email\":\"Newton_Waters@hotmail.com\"}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "",
+          "headers": [
+            {
+              "key": "allow",
+              "value": "POST, OPTIONS"
+            },
+            {
+              "key": "connection",
+              "value": "close"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            },
+            {
+              "key": "date",
+              "value": "Mon, 29 Apr 2024 14:31:18 GMT"
+            },
+            {
+              "key": "vary",
+              "value": "Accept, Cookie"
+            },
+            {
+              "key": "x-frame-options",
+              "value": "SAMEORIGIN"
+            },
+            {
+              "key": "content-length",
+              "value": "105"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "83f30122-fe6a-4459-a03b-adb9d32d49db",
+      "type": "http",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "auth/token/login/",
+      "responses": [
+        {
+          "uuid": "88b5c067-4d08-4eaa-81dd-8e7f35daa4db",
+          "body": "{\"refresh\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTcxNDQ4NzQ4MSwianRpIjoiY2QwZWVhZmFkYTQzNGQ3MGE1OTc1Zjc5MTQyMTg1NzYiLCJ1c2VyX2lkIjoxNjYzMjAzfQ.kYnyel47Y0qbHvvX_BUuK4G9B9aVMHOjo6g4NDaGqt8\",\"access\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE0NDAxMzgxLCJqdGkiOiI1MjBlYzczYzE5OGM0ZjhiODMwMDk5NTBiZGM4ODEwMyIsInVzZXJfaWQiOjE2NjMyMDN9.yhf1vIgbuYbD0TORUw3cNYcIO2MN1ecAL4mLr5k6QOQ\"}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "allow",
+              "value": "POST, OPTIONS"
+            },
+            {
+              "key": "connection",
+              "value": "close"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            },
+            {
+              "key": "date",
+              "value": "Mon, 29 Apr 2024 14:31:21 GMT"
+            },
+            {
+              "key": "vary",
+              "value": "Accept"
+            },
+            {
+              "key": "x-frame-options",
+              "value": "SAMEORIGIN"
+            },
+            {
+              "key": "content-length",
+              "value": "454"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "3c6fe837-3df1-41ef-9fc9-caa9f0b30dd1",
+      "type": "http",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "my/crocodiles/",
+      "responses": [
+        {
+          "uuid": "89ee680a-5f14-483f-85fe-65fcc50f5216",
+          "body": "{\"id\":13533414,\"name\":\"Dustin Schneider\",\"sex\":\"M\",\"date_of_birth\":\"2018-10-12\",\"age\":5}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "",
+          "headers": [
+            {
+              "key": "allow",
+              "value": "GET, POST, HEAD, OPTIONS"
+            },
+            {
+              "key": "connection",
+              "value": "close"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            },
+            {
+              "key": "date",
+              "value": "Mon, 29 Apr 2024 14:31:32 GMT"
+            },
+            {
+              "key": "vary",
+              "value": "Accept"
+            },
+            {
+              "key": "x-frame-options",
+              "value": "SAMEORIGIN"
+            },
+            {
+              "key": "content-length",
+              "value": "88"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "ca80e09c-adc2-4112-ac72-3afc71849449",
+      "type": "http",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "my/crocodiles/",
+      "responses": [
+        {
+          "uuid": "7a21acec-d186-418c-a56a-6aed46bfe55d",
+          "body": "[{\"id\":13533414,\"name\":\"Dustin Schneider\",\"sex\":\"M\",\"date_of_birth\":\"2018-10-12\",\"age\":5}]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "allow",
+              "value": "GET, POST, HEAD, OPTIONS"
+            },
+            {
+              "key": "connection",
+              "value": "close"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            },
+            {
+              "key": "date",
+              "value": "Mon, 29 Apr 2024 14:31:35 GMT"
+            },
+            {
+              "key": "vary",
+              "value": "Accept"
+            },
+            {
+              "key": "x-frame-options",
+              "value": "SAMEORIGIN"
+            },
+            {
+              "key": "content-length",
+              "value": "90"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "f8f1c6fe-860d-43cd-89f4-6d3538b14312",
+          "body": "{\n  []\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": "SEQUENTIAL"
+    },
+    {
+      "uuid": "1e7a7491-fe79-4172-9252-c89137009e89",
+      "type": "http",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "my/crocodiles/13533414/",
+      "responses": [
+        {
+          "uuid": "c19d0490-9dad-44a2-aab9-5375aa02bdda",
+          "body": "{\n  \"id\": 13533414,\n  \"name\": \"Dustin Schneider\",\n  \"sex\": \"M\",\n  \"date_of_birth\": \"2018-10-12\",\n  \"age\": 5\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "allow",
+              "value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+            },
+            {
+              "key": "connection",
+              "value": "close"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            },
+            {
+              "key": "date",
+              "value": "Mon, 29 Apr 2024 14:31:35 GMT"
+            },
+            {
+              "key": "vary",
+              "value": "Accept"
+            },
+            {
+              "key": "x-frame-options",
+              "value": "SAMEORIGIN"
+            },
+            {
+              "key": "content-length",
+              "value": "88"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "80f3588f-f845-44f3-99df-d80b4b442b3f",
+          "body": "{\n  \"id\": 13533414,\n  \"name\": \"Dustin Schneider\",\n  \"sex\": \"M\",\n  \"date_of_birth\": \"2018-10-12\",\n  \"age\": 5\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "0cd9fb7b-4368-44c9-a331-bbf4462683a2",
+          "body": "{\n  \"id\": 13533414,\n  \"name\": \"Big Bertha PATCH\",\n  \"sex\": \"M\",\n  \"date_of_birth\": \"2018-10-12\",\n  \"age\": 5\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": "SEQUENTIAL"
+    },
+    {
+      "uuid": "02fbfb50-c2a4-4d6d-95fb-a2b501776a30",
+      "type": "http",
+      "documentation": "",
+      "method": "put",
+      "endpoint": "my/crocodiles/13533414/",
+      "responses": [
+        {
+          "uuid": "2b185033-96bc-4142-9129-f1163f8be187",
+          "body": "{\"id\":13533414,\"name\":\"Dustin Schneider\",\"sex\":\"M\",\"date_of_birth\":\"2018-10-12\",\"age\":5}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "allow",
+              "value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+            },
+            {
+              "key": "connection",
+              "value": "close"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            },
+            {
+              "key": "date",
+              "value": "Mon, 29 Apr 2024 14:31:38 GMT"
+            },
+            {
+              "key": "vary",
+              "value": "Accept"
+            },
+            {
+              "key": "x-frame-options",
+              "value": "SAMEORIGIN"
+            },
+            {
+              "key": "content-length",
+              "value": "88"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "44572877-9016-4432-a384-b06608f9e136",
+      "type": "http",
+      "documentation": "",
+      "method": "patch",
+      "endpoint": "my/crocodiles/13533414/",
+      "responses": [
+        {
+          "uuid": "4f429120-bd20-4d56-93c9-ff042e822008",
+          "body": "{\"id\":13533414,\"name\":\"Big Bertha PATCH\",\"sex\":\"M\",\"date_of_birth\":\"2018-10-12\",\"age\":5}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "allow",
+              "value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+            },
+            {
+              "key": "connection",
+              "value": "close"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            },
+            {
+              "key": "date",
+              "value": "Mon, 29 Apr 2024 14:31:39 GMT"
+            },
+            {
+              "key": "vary",
+              "value": "Accept"
+            },
+            {
+              "key": "x-frame-options",
+              "value": "SAMEORIGIN"
+            },
+            {
+              "key": "content-length",
+              "value": "88"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "4298ae4a-0cd3-48fd-b81a-870a7e939623",
+      "type": "http",
+      "documentation": "",
+      "method": "delete",
+      "endpoint": "my/crocodiles/13533414/",
+      "responses": [
+        {
+          "uuid": "c56a18de-ad62-490e-a28b-60a28f07f73b",
+          "body": "",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "",
+          "headers": [
+            {
+              "key": "allow",
+              "value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+            },
+            {
+              "key": "connection",
+              "value": "close"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "date",
+              "value": "Mon, 29 Apr 2024 14:31:42 GMT"
+            },
+            {
+              "key": "vary",
+              "value": "Accept"
+            },
+            {
+              "key": "x-frame-options",
+              "value": "SAMEORIGIN"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "70cd4e3b-1e79-4234-92b5-a0133c83c8cd",
+      "type": "http",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "public/crocodiles/",
+      "responses": [
+        {
+          "uuid": "33e846cf-1a5a-4689-84b5-826b94e83bee",
+          "body": "[{\"id\":1,\"name\":\"Bert\",\"sex\":\"M\",\"date_of_birth\":\"2010-06-27\",\"age\":13},{\"id\":2,\"name\":\"Ed\",\"sex\":\"M\",\"date_of_birth\":\"1995-02-27\",\"age\":29},{\"id\":3,\"name\":\"Lyle the Crocodile\",\"sex\":\"M\",\"date_of_birth\":\"1985-03-03\",\"age\":39},{\"id\":4,\"name\":\"Solomon\",\"sex\":\"M\",\"date_of_birth\":\"1993-12-25\",\"age\":30},{\"id\":5,\"name\":\"The gharial\",\"sex\":\"F\",\"date_of_birth\":\"2004-06-28\",\"age\":19},{\"id\":6,\"name\":\"Sang Buaya\",\"sex\":\"F\",\"date_of_birth\":\"2006-01-28\",\"age\":18},{\"id\":7,\"name\":\"Sobek\",\"sex\":\"F\",\"date_of_birth\":\"1854-09-02\",\"age\":169},{\"id\":8,\"name\":\"Curious George\",\"sex\":\"M\",\"date_of_birth\":\"1981-01-03\",\"age\":43}]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "allow",
+              "value": "GET, HEAD, OPTIONS"
+            },
+            {
+              "key": "connection",
+              "value": "close"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            },
+            {
+              "key": "date",
+              "value": "Mon, 29 Apr 2024 14:37:37 GMT"
+            },
+            {
+              "key": "vary",
+              "value": "Accept"
+            },
+            {
+              "key": "x-frame-options",
+              "value": "SAMEORIGIN"
+            },
+            {
+              "key": "content-length",
+              "value": "609"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "a31184ed-3d40-40e1-b6ca-afd1d7944f9f",
+      "type": "http",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "public/crocodiles/1/",
+      "responses": [
+        {
+          "uuid": "f0994560-023c-4846-8ee8-b8f37f48f6ae",
+          "body": "{\"id\":1,\"name\":\"Bert\",\"sex\":\"M\",\"date_of_birth\":\"2010-06-27\",\"age\":13}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "allow",
+              "value": "GET, HEAD, OPTIONS"
+            },
+            {
+              "key": "connection",
+              "value": "close"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            },
+            {
+              "key": "date",
+              "value": "Mon, 29 Apr 2024 14:37:37 GMT"
+            },
+            {
+              "key": "vary",
+              "value": "Accept"
+            },
+            {
+              "key": "x-frame-options",
+              "value": "SAMEORIGIN"
+            },
+            {
+              "key": "content-length",
+              "value": "70"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    }
+  ],
+  "rootChildren": [
+    {
+      "type": "route",
+      "uuid": "45608bbd-184c-44f7-9b92-ca7907a2d822"
+    },
+    {
+      "type": "route",
+      "uuid": "83f30122-fe6a-4459-a03b-adb9d32d49db"
+    },
+    {
+      "type": "route",
+      "uuid": "3c6fe837-3df1-41ef-9fc9-caa9f0b30dd1"
+    },
+    {
+      "type": "route",
+      "uuid": "ca80e09c-adc2-4112-ac72-3afc71849449"
+    },
+    {
+      "type": "route",
+      "uuid": "1e7a7491-fe79-4172-9252-c89137009e89"
+    },
+    {
+      "type": "route",
+      "uuid": "02fbfb50-c2a4-4d6d-95fb-a2b501776a30"
+    },
+    {
+      "type": "route",
+      "uuid": "44572877-9016-4432-a384-b06608f9e136"
+    },
+    {
+      "type": "route",
+      "uuid": "4298ae4a-0cd3-48fd-b81a-870a7e939623"
+    },
+    {
+      "type": "route",
+      "uuid": "70cd4e3b-1e79-4234-92b5-a0133c83c8cd"
+    },
+    {
+      "type": "route",
+      "uuid": "a31184ed-3d40-40e1-b6ca-afd1d7944f9f"
+    }
+  ],
+  "proxyMode": true,
+  "proxyHost": "https://test-api.k6.io",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [
+    {
+      "key": "Content-Type",
+      "value": "application/json"
+    }
+  ],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": [],
+  "callbacks": []
+}

@@ -8,8 +8,11 @@
     "prettier": "prettier --ignore-path .gitignore \"**/*.+(js|ts|json)\"",
     "fix-format": "yarn prettier -- --write",
     "validate": "npm-run-all --parallel typecheck lint fix-format",
-    "cy:open": "cypress open --e2e --browser chrome",
-    "cy:run": "cypress run --e2e --browser chrome"
+    "cy:open-local": "cypress open --e2e --browser chrome --config-file cypress/config/local.config.ts",
+    "cy:run-local": "cypress run --e2e --browser chrome --config-file cypress/config/local.config.ts",
+    "cy:open-dev": "cypress open --e2e --browser chrome --config-file cypress/config/dev.config.ts",
+    "cy:run-dev": "cypress run --e2e --browser chrome --config-file cypress/config/dev.config.ts ",
+    "mock:server": "yarn mockoon-cli start --data ./mockoon/crud-croc.json --port 3000"
   },
   "author": "Murat Ozcan",
   "license": "ISC",
@@ -19,6 +22,7 @@
     "@esbuild-plugins/node-globals-polyfill": "0.2.3",
     "@esbuild-plugins/node-modules-polyfill": "0.2.2",
     "@faker-js/faker": "^8.4.1",
+    "@mockoon/cli": "^8.0.0",
     "@types/node": "20.12.7",
     "@typescript-eslint/eslint-plugin": "7.7.1",
     "@typescript-eslint/parser": "7.7.1",
@@ -35,6 +39,10 @@
     "jsonwebtoken": "9.0.2",
     "npm-run-all": "4.1.5",
     "prettier": "3.2.5",
+    "start-server-and-test": "^2.0.3",
     "typescript": "5.4.5"
+  },
+  "dependencies": {
+    "lodash": "^4.17.21"
   }
 }

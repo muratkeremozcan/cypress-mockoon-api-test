@@ -1,7 +1,12 @@
-@baseUrl = https://test-api.k6.io
+ @baseUrl = https://test-api.k6.io
+# to test locally you can run the mockoon app
+# and open the mock file in this repo at ./mockoon/crud-croc.json
+# or you can use the script that uses mockoon CLI: yarn mock:server
+# @baseUrl = http://localhost:3000
+
 @username = Lora28
 @password = ugAULkq1S75D0oc
-@crocodileId = 13528358
+@crocodileId = 13533414
 
 
 ###
@@ -18,11 +23,11 @@ POST {{baseUrl}}/user/register/
 Content-Type: application/json
 
 {
-    "username": "Lora28",
-    "first_name": "Jed",
-    "last_name": "Carroll",
-    "email": "Maxime55@yahoo.com",
-    "password": "ugAULkq1S75D0oc"
+    "username": "Martina_Frami",
+    "first_name": "Tyrique",
+    "last_name": "Yost",
+    "email": "Tess_Hoeger@yahoo.com",
+    "password": "Password-1"
 }
 
 ###
@@ -74,9 +79,9 @@ Authorization: Bearer {{login.response.body.access}}
 Content-Type: application/json
 
 {
-    "name": "Big Bertha LOCAL EDIT",
+    "name": "Dustin Schneider",
     "sex": "M",
-    "date_of_birth": "2019-01-01"
+    "date_of_birth": "2018-10-12",
 }
 
 ###
@@ -86,7 +91,7 @@ Authorization: Bearer {{login.response.body.access}}
 Content-Type: application/json
 
 {
-    "name": "Big Bertha PATCH"
+    "name": "Big Bertha PATCH",
 }
 
 ###

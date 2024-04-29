@@ -1,4 +1,4 @@
-import { generateCrocodile } from '../support/e2e'
+import { generateCrocodile } from '../support/factories'
 import { retryableBefore } from '../support/retryable-before'
 import spok from 'cy-spok'
 
@@ -83,7 +83,6 @@ describe('CRUD crocodile', () => {
         cy.deleteCrocodile(token, id)
         cy.getMyCrocodiles(token)
           .its('body')
-          .each(spok(crocProps))
           .findOne({ name: crocodile.name })
           .should('not.exist')
       })

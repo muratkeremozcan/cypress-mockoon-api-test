@@ -67,7 +67,7 @@ jobs:
         uses: cypress-io/github-action@v6.5.0
         with:
           browser: chrome
-          config-file: ./cypress/config/dev-config.ts
+          config-file: ./config/dev-config.ts
           # record: true
           # group: dev
           # tag: dev
@@ -84,7 +84,7 @@ jobs:
         with:
           start: yarn mock:server
           browser: chrome
-          config-file: ./cypress/config/local-config.ts
+          config-file: ./config/local-config.ts
           # record: true
           # group: local
           # tag: local

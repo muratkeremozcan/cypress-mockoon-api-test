@@ -10,8 +10,9 @@
 
 
 ###
-# @name getPublickCrocodiles
+# @name getPublicCrocodiles
 GET {{baseUrl}}/public/crocodiles/
+
 
 ###
 # @name getPublicCrocodile
@@ -98,3 +99,46 @@ Content-Type: application/json
 # @name deleteCrocodile
 DELETE {{baseUrl}}/my/crocodiles/{{crocodileId}}/
 Authorization: Bearer {{login.response.body.access}}
+
+
+# these here are just for testing mock data features of mockoon
+# https://mockoon.com/tutorials/generate-mock-json-data/
+###
+GET {{baseUrl}}/faker-example
+
+### queryParam example
+GET {{baseUrl}}/faker-example?total=2
+
+###
+GET {{baseUrl}}/switch-example
+Content-Type: application/json
+
+{
+  "firstname": "John",
+  "lastname": "Doe",
+  "birthdate": "1956-10-10",
+  "email": "john.doe@domain.com"
+}
+
+### #switch command, with payload.status condition
+# ISSUE: always gives VIP true
+GET {{baseUrl}}/switch-example
+Content-Type: application/json
+
+{
+  "firstname": "John",
+  "lastname": "Doe",
+  "birthdate": "1956-10-10",
+  "email": "john.doe@domain.com",
+  "status": "active"
+}
+
+
+### urlParam example
+GET {{baseUrl}}/additional-template-example/100
+
+###
+GET {{baseUrl}}/additional-template-example/1
+
+### 
+GET {{baseUrl}}/additional-template-example/2

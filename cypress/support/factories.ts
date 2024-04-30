@@ -35,22 +35,21 @@ export const generateCrocodile = (): CrocodileBase => {
 }
 
 export const generateUser = () => {
-  // if (getEnvironment() !== 'local') {
-  return {
-    username: faker.internet.userName(),
-    first_name: faker.person.firstName(),
-    last_name: faker.person.lastName(),
-    email: faker.internet.email(),
-    password: faker.internet.password()
+  if (getEnvironment() !== 'local') {
+    return {
+      username: faker.internet.userName(),
+      first_name: faker.person.firstName(),
+      last_name: faker.person.lastName(),
+      email: faker.internet.email(),
+      password: faker.internet.password()
+    }
+  } else {
+    // use fixed data for local
+    return {
+      username: 'Tessie.Walker',
+      first_name: 'Samir',
+      last_name: 'Lakin',
+      email: 'Newton_Waters@hotmail.com'
+    }
   }
-  // }
-  // else {
-  //   // use fixed data for local
-  //   return {
-  //     username: 'Tessie.Walker',
-  //     first_name: 'Samir',
-  //     last_name: 'Lakin',
-  //     email: 'Newton_Waters@hotmail.com'
-  //   }
-  // }
 }

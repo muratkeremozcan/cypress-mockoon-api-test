@@ -133,7 +133,7 @@
       "responses": [
         {
           "uuid": "89ee680a-5f14-483f-85fe-65fcc50f5216",
-          "body": "{\"id\":13533414,\"name\":\"Dustin Schneider\",\"sex\":\"M\",\"date_of_birth\":\"2018-10-12\",\"age\":5}",
+          "body": "{\n  \"id\": 13533414,\n  \"name\": \"Dustin Schneider\",\n  \"sex\": \"M\",\n  \"date_of_birth\": \"2018-10-12\",\n  \"age\": 5\n}",
           "latency": 0,
           "statusCode": 201,
           "label": "",
@@ -191,7 +191,7 @@
       "responses": [
         {
           "uuid": "7a21acec-d186-418c-a56a-6aed46bfe55d",
-          "body": "[{\"id\":13533414,\"name\":\"Dustin Schneider\",\"sex\":\"M\",\"date_of_birth\":\"2018-10-12\",\"age\":5}]",
+          "body": "[\n  {\n    \"id\": 13533414,\n    \"name\": \"Dustin Schneider\",\n    \"sex\": \"M\",\n    \"date_of_birth\": \"2018-10-12\",\n    \"age\": 5\n  },\n  {{data 'crocodiles'}}\n]",
           "latency": 0,
           "statusCode": 200,
           "label": "",
@@ -227,19 +227,19 @@
           ],
           "bodyType": "INLINE",
           "filePath": "",
-          "databucketID": "",
+          "databucketID": "hiw5",
           "sendFileAsBody": false,
           "rules": [],
           "rulesOperator": "OR",
           "disableTemplating": false,
           "fallbackTo404": false,
-          "default": false,
+          "default": true,
           "crudKey": "id",
           "callbacks": []
         },
         {
           "uuid": "f8f1c6fe-860d-43cd-89f4-6d3538b14312",
-          "body": "{\n  []\n}",
+          "body": "[\n  {{data 'crocodiles'}}\n]\n",
           "latency": 0,
           "statusCode": 200,
           "label": "",
@@ -364,7 +364,7 @@
       "responses": [
         {
           "uuid": "2b185033-96bc-4142-9129-f1163f8be187",
-          "body": "{\"id\":13533414,\"name\":\"Dustin Schneider\",\"sex\":\"M\",\"date_of_birth\":\"2018-10-12\",\"age\":5}",
+          "body": "{\n  \"id\": 13533414,\n  \"name\": \"Dustin Schneider\",\n  \"sex\": \"M\",\n  \"date_of_birth\": \"2018-10-12\",\n  \"age\": 5\n}",
           "latency": 0,
           "statusCode": 200,
           "label": "",
@@ -422,7 +422,7 @@
       "responses": [
         {
           "uuid": "4f429120-bd20-4d56-93c9-ff042e822008",
-          "body": "{\"id\":13533414,\"name\":\"Big Bertha PATCH\",\"sex\":\"M\",\"date_of_birth\":\"2018-10-12\",\"age\":5}",
+          "body": "{\n  \"id\": 13533414,\n  \"name\": \"Big Bertha PATCH\",\n  \"sex\": \"M\",\n  \"date_of_birth\": \"2018-10-12\",\n  \"age\": 5\n}",
           "latency": 0,
           "statusCode": 200,
           "label": "",
@@ -534,7 +534,7 @@
       "responses": [
         {
           "uuid": "33e846cf-1a5a-4689-84b5-826b94e83bee",
-          "body": "[{\"id\":1,\"name\":\"Bert\",\"sex\":\"M\",\"date_of_birth\":\"2010-06-27\",\"age\":13},{\"id\":2,\"name\":\"Ed\",\"sex\":\"M\",\"date_of_birth\":\"1995-02-27\",\"age\":29},{\"id\":3,\"name\":\"Lyle the Crocodile\",\"sex\":\"M\",\"date_of_birth\":\"1985-03-03\",\"age\":39},{\"id\":4,\"name\":\"Solomon\",\"sex\":\"M\",\"date_of_birth\":\"1993-12-25\",\"age\":30},{\"id\":5,\"name\":\"The gharial\",\"sex\":\"F\",\"date_of_birth\":\"2004-06-28\",\"age\":19},{\"id\":6,\"name\":\"Sang Buaya\",\"sex\":\"F\",\"date_of_birth\":\"2006-01-28\",\"age\":18},{\"id\":7,\"name\":\"Sobek\",\"sex\":\"F\",\"date_of_birth\":\"1854-09-02\",\"age\":169},{\"id\":8,\"name\":\"Curious George\",\"sex\":\"M\",\"date_of_birth\":\"1981-01-03\",\"age\":43}]",
+          "body": "[\n  {{#repeat (faker 'number.int' min=2 max=20 )}}\n  {\n    \"id\": {{faker 'datatype.number' }},\n    \"name\": \"{{faker 'person.fullName'}}\",\n    \"sex\": \"{{oneOf (array 'M' 'F')}}\", \n    \"date_of_birth\": \"2010-06-27\",\n    \"age\": {{ faker 'number.int' 100}}\n  }\n  {{/repeat}}\n]",
           "latency": 0,
           "statusCode": 200,
           "label": "",
@@ -592,7 +592,7 @@
       "responses": [
         {
           "uuid": "f0994560-023c-4846-8ee8-b8f37f48f6ae",
-          "body": "{\"id\":1,\"name\":\"Bert\",\"sex\":\"M\",\"date_of_birth\":\"2010-06-27\",\"age\":13}",
+          "body": "{\n  \"id\": 1,\n  \"name\": \"{{faker 'person.firstName'}}\",\n  \"sex\": \"{{oneOf (array 'M' 'F')}}\", \n  \"date_of_birth\": \"2010-06-27\",\n  \"age\": {{ faker 'number.int' 100}}\n}",
           "latency": 0,
           "statusCode": 200,
           "label": "",
@@ -684,7 +684,7 @@
       "uuid": "a31184ed-3d40-40e1-b6ca-afd1d7944f9f"
     }
   ],
-  "proxyMode": true,
+  "proxyMode": false,
   "proxyHost": "https://test-api.k6.io",
   "proxyRemovePrefix": false,
   "tlsOptions": {
@@ -715,6 +715,14 @@
       "value": ""
     }
   ],
-  "data": [],
+  "data": [
+    {
+      "uuid": "27502c2c-7111-4c63-bed9-617eb80fa5c9",
+      "id": "hiw5",
+      "name": "crocodiles",
+      "documentation": "",
+      "value": "{{#repeat (faker 'number.int' min=1 max=10 )}}\n{\n  \"id\": {{faker 'datatype.number' }},\n  \"name\": \"{{faker 'person.fullName'}}\",\n  \"sex\": \"{{oneOf (array 'M' 'F')}}\", \n  \"date_of_birth\": \"2010-06-27\",\n  \"age\": {{ faker 'number.int' 100}}\n}\n{{/repeat}}\n"
+    }
+  ],
   "callbacks": []
 }

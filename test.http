@@ -10,8 +10,9 @@
 
 
 ###
-# @name getPublickCrocodiles
+# @name getPublicCrocodiles
 GET {{baseUrl}}/public/crocodiles/
+
 
 ###
 # @name getPublicCrocodile

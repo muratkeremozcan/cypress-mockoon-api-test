@@ -1,0 +1,55 @@
+@baseUrl = http://localhost:3000
+
+# https://mockoon.com/tutorials/generate-mock-json-data/
+###
+GET {{baseUrl}}/faker-example
+
+### queryParam example
+GET {{baseUrl}}/faker-example?total=2
+
+### switch command, with payload.status condition
+GET {{baseUrl}}/switch-example
+Content-Type: application/json
+
+{
+  "firstname": "John",
+  "lastname": "Doe",
+  "birthdate": "1956-10-10",
+  "email": "john.doe@domain.com"
+}
+
+GET {{baseUrl}}/switch-example
+Content-Type: application/json
+
+{
+  "firstname": "John",
+  "lastname": "Doe",
+  "birthdate": "1956-10-10",
+  "email": "john.doe@domain.com",
+  "status": "active"
+}
+
+
+### urlParam example
+GET {{baseUrl}}/additional-template-example/100
+
+###
+GET {{baseUrl}}/additional-template-example/1
+
+### 
+GET {{baseUrl}}/additional-template-example/2
+
+# https://mockoon.com/tutorials/responses-and-rules/
+### 
+GET {{baseUrl}}
+
+###
+GET {{baseUrl}}
+authorization: 123123
+
+###
+GET {{baseUrl}}/protected
+
+###
+GET {{baseUrl}}/protected
+authorization: 123123

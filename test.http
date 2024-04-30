@@ -1,8 +1,8 @@
- @baseUrl = https://test-api.k6.io
+#  @baseUrl = https://test-api.k6.io
 # to test locally you can run the mockoon app
 # and open the mock file in this repo at ./mockoon/crud-croc.json
 # or you can use the script that uses mockoon CLI: yarn mock:server
-# @baseUrl = http://localhost:3000
+@baseUrl = http://localhost:3000
 
 @username = Lora28
 @password = ugAULkq1S75D0oc

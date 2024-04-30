@@ -133,7 +133,7 @@
       "responses": [
         {
           "uuid": "89ee680a-5f14-483f-85fe-65fcc50f5216",
-          "body": "{\"id\":13533414,\"name\":\"Dustin Schneider\",\"sex\":\"M\",\"date_of_birth\":\"2018-10-12\",\"age\":5}",
+          "body": "{\n  \"id\": 13533414,\n  \"name\": \"Dustin Schneider\",\n  \"sex\": \"M\",\n  \"date_of_birth\": \"2018-10-12\",\n  \"age\": 5\n}",
           "latency": 0,
           "statusCode": 201,
           "label": "",
@@ -191,7 +191,7 @@
       "responses": [
         {
           "uuid": "7a21acec-d186-418c-a56a-6aed46bfe55d",
-          "body": "[\n  {\n    \"id\": 13533414,\n    \"name\": \"Dustin Schneider\",\n    \"sex\": \"M\",\n    \"date_of_birth\": \"2018-10-12\",\n    \"age\": 5\n  },\n  {{#repeat (faker 'number.int' min=1 max=10 )}}\n  {\n    \"id\": {{faker 'datatype.number' }},\n    \"name\": \"{{faker 'person.fullName'}}\",\n    \"sex\": \"{{oneOf (array 'M' 'F')}}\", \n    \"date_of_birth\": \"2010-06-27\",\n    \"age\": {{ faker 'number.int' 100}}\n  }\n  {{/repeat}}\n]",
+          "body": "[\n  {\n    \"id\": 13533414,\n    \"name\": \"Dustin Schneider\",\n    \"sex\": \"M\",\n    \"date_of_birth\": \"2018-10-12\",\n    \"age\": 5\n  },\n  {{data 'crocodiles'}}\n]",
           "latency": 0,
           "statusCode": 200,
           "label": "",
@@ -227,19 +227,19 @@
           ],
           "bodyType": "INLINE",
           "filePath": "",
-          "databucketID": "",
+          "databucketID": "hiw5",
           "sendFileAsBody": false,
           "rules": [],
           "rulesOperator": "OR",
           "disableTemplating": false,
           "fallbackTo404": false,
-          "default": false,
+          "default": true,
           "crudKey": "id",
           "callbacks": []
         },
         {
           "uuid": "f8f1c6fe-860d-43cd-89f4-6d3538b14312",
-          "body": "[\n  {{#repeat (faker 'number.int' min=2 max=20 )}}\n  {\n    \"id\": {{faker 'datatype.uuid' }},\n    \"name\": \"{{faker 'person.fullName'}}\",\n    \"sex\": \"{{oneOf (array 'M' 'F')}}\", \n    \"date_of_birth\": \"2010-06-27\",\n    \"age\": \"{{ faker 'number.int' 100}}\"\n  }\n  {{/repeat}}\n]",
+          "body": "[\n  {{data 'crocodiles'}}\n]\n",
           "latency": 0,
           "statusCode": 200,
           "label": "",
@@ -364,7 +364,7 @@
       "responses": [
         {
           "uuid": "2b185033-96bc-4142-9129-f1163f8be187",
-          "body": "{\"id\":13533414,\"name\":\"Dustin Schneider\",\"sex\":\"M\",\"date_of_birth\":\"2018-10-12\",\"age\":5}",
+          "body": "{\n  \"id\": 13533414,\n  \"name\": \"Dustin Schneider\",\n  \"sex\": \"M\",\n  \"date_of_birth\": \"2018-10-12\",\n  \"age\": 5\n}",
           "latency": 0,
           "statusCode": 200,
           "label": "",
@@ -422,7 +422,7 @@
       "responses": [
         {
           "uuid": "4f429120-bd20-4d56-93c9-ff042e822008",
-          "body": "{\"id\":13533414,\"name\":\"Big Bertha PATCH\",\"sex\":\"M\",\"date_of_birth\":\"2018-10-12\",\"age\":5}",
+          "body": "{\n  \"id\": 13533414,\n  \"name\": \"Big Bertha PATCH\",\n  \"sex\": \"M\",\n  \"date_of_birth\": \"2018-10-12\",\n  \"age\": 5\n}",
           "latency": 0,
           "statusCode": 200,
           "label": "",
@@ -640,93 +640,6 @@
         }
       ],
       "responseMode": null
-    },
-    {
-      "uuid": "eace4a46-0505-4cd4-bcfd-3d5f5408a392",
-      "type": "http",
-      "documentation": "",
-      "method": "get",
-      "endpoint": "faker-example",
-      "responses": [
-        {
-          "uuid": "e78ca653-abf0-40ae-98a8-1ac79bd2e51c",
-          "body": "[\n  {{#repeat (queryParam 'total' '10')}}\n  {\n    \"id\": {{@index}},\n    \"title\": \"{{faker 'lorem.sentence'}}\",\n    \"content\": \"{{faker 'lorem.sentences'}}\",\n    \"media\": \"{{faker 'image.urlLoremFlickr' category='nature'}}\",\n    \"author\": {\n      \"name\": \"{{faker 'person.firstName'}} {{faker 'person.firstName'}}\",\n      \"avatar\": \"{{faker 'image.avatar'}}\"\n    },\n    \"comments\": [\n      {{#repeat (faker 'number.int' 5)}}\n      {\n        \"id\": \"{{faker 'string.uuid'}}\",\n        \"content\": \"{{faker 'lorem.sentence'}}\",\n        \"author\": {\n          \"name\": \"{{faker 'person.firstName'}} {{faker 'person.firstName'}}\",\n          \"avatar\": \"{{faker 'image.avatar'}}\"\n        }\n      }\n      {{/repeat}}\n    ],\n    \"likes\": {{faker 'number.int' 100}},\n    \"shares\": {{faker 'number.int' 100}},\n    \"location\": {\n      \"lat\": {{faker 'location.latitude'}},\n      \"long\": {{faker 'location.longitude'}}\n    },\n    \"archived\": {{faker 'datatype.boolean'}}\n  }\n  {{/repeat}}\n]",
-          "latency": 0,
-          "statusCode": 200,
-          "label": "",
-          "headers": [],
-          "bodyType": "INLINE",
-          "filePath": "",
-          "databucketID": "",
-          "sendFileAsBody": false,
-          "rules": [],
-          "rulesOperator": "OR",
-          "disableTemplating": false,
-          "fallbackTo404": false,
-          "default": true,
-          "crudKey": "id",
-          "callbacks": []
-        }
-      ],
-      "responseMode": null
-    },
-    {
-      "uuid": "3ee66068-dbd2-4b8a-a2e2-7468b5fe59a3",
-      "type": "http",
-      "documentation": "",
-      "method": "get",
-      "endpoint": "additional-template-example/:id",
-      "responses": [
-        {
-          "uuid": "2ec889f8-18ec-480b-ac28-0cc45b531656",
-          "body": "{\n  \"userId\": \"{{urlParam 'id'}}\",\n  \"name\": \"{{queryParam 'name' 'John'}}\",\n  \"lang\": \"{{{header 'Accept-Language' 'en'}}}\",\n  \"elementTitle\": \"{{body 'elements.0.title' 'default'}}\",\n  \"ip\": \"{{ip}}\",\n  \"method\": \"{{method}}\",\n  \"hostname\": \"{{hostname}}\",\n  \"friends\": [\n    {{#repeat 2}}\n    { \n      \"id\": {{@index}}, \n      \"name\": \"{{faker 'person.firstName'}} {{faker 'person.lastName'}}\" \n    }\n    {{/repeat}}\n  ], \n  \"oneItem\": \"{{oneOf (array 'item1' 'item2' 'item3')}}\", \n  \"someItemsAsString\": \"{{someOf (array 'item1' 'item2' 'item3') 1 2}}\", \n  \"someItemsAsArray\": {{{someOf (array 'item1' 'item2' 'item3') 1 2 true}}}, \n  \"userName\": \n    {{#switch (urlParam 'id')}}\n      {{#case '1'}}\"John\"{{/case}}\n      {{#case '2'}}\"Jack\"{{/case}}\n      {{#default}}\"Peter\"{{/default}}\n    {{/switch}}\n}",
-          "latency": 0,
-          "statusCode": 200,
-          "label": "",
-          "headers": [],
-          "bodyType": "INLINE",
-          "filePath": "",
-          "databucketID": "",
-          "sendFileAsBody": false,
-          "rules": [],
-          "rulesOperator": "OR",
-          "disableTemplating": false,
-          "fallbackTo404": false,
-          "default": true,
-          "crudKey": "id",
-          "callbacks": []
-        }
-      ],
-      "responseMode": null
-    },
-    {
-      "uuid": "3a77dff2-4df8-4a05-91b0-179afd6ff285",
-      "type": "http",
-      "documentation": "",
-      "method": "get",
-      "endpoint": "switch-example",
-      "responses": [
-        {
-          "uuid": "ec4c77c0-737b-4ec6-acf3-cbed7e5301e6",
-          "body": "{\n  \"id\": \"{{faker 'string.uuid'}}\",\n  \"firstname\": \"{{body 'firstname' 'DefaultFirstName'}}\",\n  \"lastname\": \"{{body 'lastname' 'DefaultLastName'}}\",\n  \"birthdate\": \"{{body 'birthdate'}}\",\n  \"email\": \"{{body 'email'}}\",\n  \"createdAt\": \"{{now}}\",\n  \"location\": {\n    \"latitude\": \"{{faker 'location.latitude'}}\",\n    \"longitude\": \"{{faker 'location.longitude'}}\"\n  },\n  \"status\": {\n    {{#switch (body 'status')}}\n      {{#case \"active\"}} \"active\": true, \"inactive\": false {{/case}}\n      {{#case \"inactive\"}} \"active\": false, \"inactive\": true {{/case}}\n      {{#default}} \"active\": false, \"inactive\": false {{/default}}\n    {{/switch}}\n  }\n}\n",
-          "latency": 0,
-          "statusCode": 200,
-          "label": "",
-          "headers": [],
-          "bodyType": "INLINE",
-          "filePath": "",
-          "databucketID": "",
-          "sendFileAsBody": false,
-          "rules": [],
-          "rulesOperator": "OR",
-          "disableTemplating": false,
-          "fallbackTo404": false,
-          "default": true,
-          "crudKey": "id",
-          "callbacks": []
-        }
-      ],
-      "responseMode": null
     }
   ],
   "rootChildren": [
@@ -769,18 +682,6 @@
     {
       "type": "route",
       "uuid": "a31184ed-3d40-40e1-b6ca-afd1d7944f9f"
-    },
-    {
-      "type": "route",
-      "uuid": "eace4a46-0505-4cd4-bcfd-3d5f5408a392"
-    },
-    {
-      "type": "route",
-      "uuid": "3a77dff2-4df8-4a05-91b0-179afd6ff285"
-    },
-    {
-      "type": "route",
-      "uuid": "3ee66068-dbd2-4b8a-a2e2-7468b5fe59a3"
     }
   ],
   "proxyMode": false,
@@ -814,6 +715,14 @@
       "value": ""
     }
   ],
-  "data": [],
+  "data": [
+    {
+      "uuid": "27502c2c-7111-4c63-bed9-617eb80fa5c9",
+      "id": "hiw5",
+      "name": "crocodiles",
+      "documentation": "",
+      "value": "{{#repeat (faker 'number.int' min=1 max=10 )}}\n{\n  \"id\": {{faker 'datatype.number' }},\n  \"name\": \"{{faker 'person.fullName'}}\",\n  \"sex\": \"{{oneOf (array 'M' 'F')}}\", \n  \"date_of_birth\": \"2010-06-27\",\n  \"age\": {{ faker 'number.int' 100}}\n}\n{{/repeat}}\n"
+    }
+  ],
   "callbacks": []
 }

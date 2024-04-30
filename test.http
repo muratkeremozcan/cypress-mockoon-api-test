@@ -1,8 +1,8 @@
-#  @baseUrl = https://test-api.k6.io
+ @baseUrl = https://test-api.k6.io
 # to test locally you can run the mockoon app
 # and open the mock file in this repo at ./mockoon/crud-croc.json
 # or you can use the script that uses mockoon CLI: yarn mock:server
-@baseUrl = http://localhost:3000
+# @baseUrl = http://localhost:3000
 
 @username = Lora28
 @password = ugAULkq1S75D0oc
@@ -99,46 +99,3 @@ Content-Type: application/json
 # @name deleteCrocodile
 DELETE {{baseUrl}}/my/crocodiles/{{crocodileId}}/
 Authorization: Bearer {{login.response.body.access}}
-
-
-# these here are just for testing mock data features of mockoon
-# https://mockoon.com/tutorials/generate-mock-json-data/
-###
-GET {{baseUrl}}/faker-example
-
-### queryParam example
-GET {{baseUrl}}/faker-example?total=2
-
-###
-GET {{baseUrl}}/switch-example
-Content-Type: application/json
-
-{
-  "firstname": "John",
-  "lastname": "Doe",
-  "birthdate": "1956-10-10",
-  "email": "john.doe@domain.com"
-}
-
-### #switch command, with payload.status condition
-# ISSUE: always gives VIP true
-GET {{baseUrl}}/switch-example
-Content-Type: application/json
-
-{
-  "firstname": "John",
-  "lastname": "Doe",
-  "birthdate": "1956-10-10",
-  "email": "john.doe@domain.com",
-  "status": "active"
-}
-
-
-### urlParam example
-GET {{baseUrl}}/additional-template-example/100
-
-###
-GET {{baseUrl}}/additional-template-example/1
-
-### 
-GET {{baseUrl}}/additional-template-example/2

@@ -33,7 +33,11 @@ yarn cy:run-dev
 
 The API we are using https://test-api.k6.io/.
 
-There is a `test.rest` file in the repo root that can help us get familiar with the API. It uses [VsCode REST Client](https://marketplace.visualstudio.com/items?itemName=humao.rest-client) extension to test the api like we would do with Postman.
+There is a `test.http` file in the repo root that can help us get familiar with the API. It uses [VsCode REST Client](https://marketplace.visualstudio.com/items?itemName=humao.rest-client) extension to test the api like we would do with Postman.
+
+## Mockoon tutorial examples
+
+You find the examples from [Mockoon tutorials](https://mockoon.com/tutorials/) under the `mockoon` folder and the `examples.http` file. Just open the file `examples.json` with Mockoon and use Vscode Rest Client to reproduce the tutorials.
 
 ## Static-analysis
 

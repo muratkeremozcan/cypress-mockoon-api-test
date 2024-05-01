@@ -13,7 +13,7 @@
       "type": "crud",
       "documentation": "",
       "method": "",
-      "endpoint": "my/crocodiles",
+      "endpoint": "my/crocodiles-crud",
       "responses": [
         {
           "uuid": "f20acd5b-145b-4723-b547-39b15d505252",
@@ -330,6 +330,35 @@
         }
       ],
       "responseMode": null
+    },
+    {
+      "uuid": "4f91856e-797d-41d4-bca1-562f164ba99e",
+      "type": "http",
+      "documentation": "to test if env vars are working",
+      "method": "get",
+      "endpoint": "get-env",
+      "responses": [
+        {
+          "uuid": "3b9a854c-15d1-4d3b-afb3-df6782b30f3e",
+          "body": "{\n  \"response\": {{getEnvVar 'MOCKOON_API_TOKEN'}}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "set the env var and open Mockoon via command line",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
     }
   ],
   "rootChildren": [
@@ -360,6 +389,10 @@
     {
       "type": "route",
       "uuid": "3397446e-3911-483c-b0ed-ee87d52d6596"
+    },
+    {
+      "type": "route",
+      "uuid": "4f91856e-797d-41d4-bca1-562f164ba99e"
     },
     {
       "type": "route",
@@ -395,7 +428,12 @@
       "value": "Bearer {{getEnvVar 'MOCKOON_API_TOKEN'}}"
     }
   ],
-  "proxyResHeaders": [],
+  "proxyResHeaders": [
+    {
+      "key": "https://mockoon.com/tutorials/use-global-variables-state/",
+      "value": "Bearer {{getEnvVar 'MOCKOON_API_TOKEN'}}"
+    }
+  ],
   "data": [
     {
       "uuid": "a90f99eb-7670-442d-bd25-026cff0d95f7",

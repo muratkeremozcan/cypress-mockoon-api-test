@@ -1,4 +1,4 @@
-@baseUrl = http://localhost:3000
+@baseUrl = http://localhost:3001
 
 # https://mockoon.com/tutorials/generate-mock-json-data/
 ###
@@ -39,6 +39,25 @@ GET {{baseUrl}}/additional-template-example/1
 ### 
 GET {{baseUrl}}/additional-template-example/2
 
+# https://mockoon.com/tutorials/use-environment-variables/
+# set the environment variable and restart Mockoon:  export MOCKOON_API_TOKEN=abcd1234
+# open Mockoon via command line: open /Applications/Mockoon.app
+# the below route is from the other server, start it and this call will get proxied
+
+### test if env vars are working
+GET {{baseUrl}}/get-env
+
+###
+GET {{baseUrl}}/my/crocodiles/
+
+
+# https://mockoon.com/tutorials/use-global-variables-state/
+### 
+POST {{baseUrl}}/login
+
+###
+GET {{baseUrl}}/profile
+
 # https://mockoon.com/tutorials/responses-and-rules/
 ### 
 GET {{baseUrl}}
@@ -47,9 +66,12 @@ GET {{baseUrl}}
 GET {{baseUrl}}
 authorization: 123123
 
+# https://mockoon.com/tutorials/use-global-variables-state/
+# you may have to disable the /* route while testing other routes, because it will block with auth requirement
 ###
 GET {{baseUrl}}/protected
 
 ###
 GET {{baseUrl}}/protected
 authorization: 123123
+

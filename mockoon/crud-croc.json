@@ -257,7 +257,7 @@
           "callbacks": []
         }
       ],
-      "responseMode": "SEQUENTIAL"
+      "responseMode": null
     },
     {
       "uuid": "1e7a7491-fe79-4172-9252-c89137009e89",

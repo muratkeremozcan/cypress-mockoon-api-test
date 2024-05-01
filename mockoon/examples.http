@@ -29,7 +29,6 @@ Content-Type: application/json
   "status": "active"
 }
 
-
 ### urlParam example
 GET {{baseUrl}}/additional-template-example/100
 
@@ -44,12 +43,20 @@ GET {{baseUrl}}/additional-template-example/2
 # open Mockoon via command line: open /Applications/Mockoon.app
 # the below route is from the other server, start it and this call will get proxied
 
+### you can also run this to set the env var
+POST {{baseUrl}}/mockoon-admin/env-vars
+Content-Type: application/json
+
+{
+  "key": "MOCKOON_API_TOKEN",
+  "value": "abcd1234"
+}
+
 ### test if env vars are working
 GET {{baseUrl}}/get-env
 
-###
-GET {{baseUrl}}/my/crocodiles/
-
+### also check out https://mockoon.com/docs/latest/admin-api/environment-variables/
+GET {{baseUrl}}/mockoon-admin/env-vars
 
 # https://mockoon.com/tutorials/use-global-variables-state/
 ### 
@@ -75,3 +82,5 @@ GET {{baseUrl}}/protected
 GET {{baseUrl}}/protected
 authorization: 123123
 
+### reset data buckets
+POST {{baseUrl}}/mockoon-admin/data-buckets/purge

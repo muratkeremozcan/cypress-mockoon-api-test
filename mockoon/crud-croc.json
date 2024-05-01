@@ -257,7 +257,7 @@
           "callbacks": []
         }
       ],
-      "responseMode": null
+      "responseMode": "SEQUENTIAL"
     },
     {
       "uuid": "1e7a7491-fe79-4172-9252-c89137009e89",
@@ -534,7 +534,7 @@
       "responses": [
         {
           "uuid": "33e846cf-1a5a-4689-84b5-826b94e83bee",
-          "body": "[\n  {{#repeat (faker 'number.int' min=2 max=20 )}}\n  {\n    \"id\": {{faker 'datatype.number' }},\n    \"name\": \"{{faker 'person.fullName'}}\",\n    \"sex\": \"{{oneOf (array 'M' 'F')}}\", \n    \"date_of_birth\": \"2010-06-27\",\n    \"age\": {{ faker 'number.int' 100}}\n  }\n  {{/repeat}}\n]",
+          "body": "[\n  {{#repeat (faker 'number.int' min=2 max=20 )}}\n  {\n    \"id\": {{faker 'datatype.number' }},\n    \"name\": \"{{faker 'person.fullName'}}\",\n    \"sex\": \"{{oneOf (array 'M' 'F')}}\", \n    \"date_of_birth\": \"{{dateFormat (faker 'date.past' 100 '2024-01-01') 'yyyy-MM-dd'}}\",\n    \"age\": {{ faker 'number.int' 100}}\n  }\n  {{/repeat}}\n]",
           "latency": 0,
           "statusCode": 200,
           "label": "",
@@ -592,7 +592,7 @@
       "responses": [
         {
           "uuid": "f0994560-023c-4846-8ee8-b8f37f48f6ae",
-          "body": "{\n  \"id\": 1,\n  \"name\": \"{{faker 'person.firstName'}}\",\n  \"sex\": \"{{oneOf (array 'M' 'F')}}\", \n  \"date_of_birth\": \"2010-06-27\",\n  \"age\": {{ faker 'number.int' 100}}\n}",
+          "body": "{\n  \"id\": 1,\n  \"name\": \"{{faker 'person.firstName'}}\",\n  \"sex\": \"{{oneOf (array 'M' 'F')}}\", \n  \"date_of_birth\": \"{{dateFormat (faker 'date.past' 100 '2024-01-01') 'yyyy-MM-dd'}}\",\n  \"age\": {{ faker 'number.int' 100}}\n}",
           "latency": 0,
           "statusCode": 200,
           "label": "",
@@ -721,7 +721,7 @@
       "id": "hiw5",
       "name": "crocodiles",
       "documentation": "",
-      "value": "{{#repeat (faker 'number.int' min=1 max=10 )}}\n{\n  \"id\": {{faker 'datatype.number' }},\n  \"name\": \"{{faker 'person.fullName'}}\",\n  \"sex\": \"{{oneOf (array 'M' 'F')}}\", \n  \"date_of_birth\": \"2010-06-27\",\n  \"age\": {{ faker 'number.int' 100}}\n}\n{{/repeat}}\n"
+      "value": "{{#repeat (faker 'number.int' min=1 max=10 )}}\n{\n  \"id\": {{faker 'datatype.number' }},\n  \"name\": \"{{faker 'person.fullName'}}\",\n  \"sex\": \"{{oneOf (array 'M' 'F')}}\", \n  \"date_of_birth\": \"{{dateFormat (faker 'date.past' 100 '2024-01-01') 'yyyy-MM-dd'}}\",\n  \"age\": {{ faker 'number.int' 100}}\n}\n{{/repeat}}\n"
     }
   ],
   "callbacks": []

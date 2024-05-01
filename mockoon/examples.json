@@ -428,12 +428,7 @@
       "value": "Bearer {{getEnvVar 'MOCKOON_API_TOKEN'}}"
     }
   ],
-  "proxyResHeaders": [
-    {
-      "key": "https://mockoon.com/tutorials/use-global-variables-state/",
-      "value": "Bearer {{getEnvVar 'MOCKOON_API_TOKEN'}}"
-    }
-  ],
+  "proxyResHeaders": [],
   "data": [
     {
       "uuid": "a90f99eb-7670-442d-bd25-026cff0d95f7",
